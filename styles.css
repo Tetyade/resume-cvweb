@@ -1,0 +1,385 @@
+:root {
+    --bg-main: #fdfaf7;
+    --card-bg: #ffffff;        
+    --accent: #6f4e37;
+    --accent-text: #ffffff;
+    --accent-hover: #5d4037;
+    --text-dark: #3d2b1f;
+    --text-muted: #8d7765;
+    --section-bg: #f9f3ee;
+    --border-color: #e7d8cc;
+    --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+body.dark-theme {
+    --bg-main: #000000;
+    --card-bg: #121212;
+    --accent: #d7ccc8;
+    --accent-text: #000000;
+    --accent-hover: #ffffff;
+    --text-dark: #e0e0e0;
+    --text-muted: #888888;
+    --section-bg: #1a1a1a;
+    --border-color: #333333;
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-dark);
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.container {
+    max-width: 850px;
+    margin: 0 auto;
+    background: var(--card-bg);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+#theme-toggle {
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 50px;
+    border: 1px solid var(--border-color);
+    background: var(--section-bg);
+    color: var(--accent);
+    font-weight: bold;
+    transition: var(--transition);
+    margin-bottom: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#theme-toggle:hover {
+    transform: scale(1.05);
+    background: var(--accent);
+    color: var(--accent-text);
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 30px 0;
+}
+
+nav a {
+    display: inline-block;
+    text-decoration: none;
+    background: var(--section-bg);
+    color: var(--accent) !important;
+    padding: 12px 20px;
+    margin: 0;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border: 1px solid var(--border-color) !important;
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+nav a:hover {
+    background-color: var(--accent);
+    color: var(--accent-text) !important;
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+section {
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 0;
+    animation: fade-in-up linear both;
+    animation-timeline: view();
+    animation-range: entry 5% cover 20%;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.col-left section {
+    background-color: var(--section-bg);
+    border: 1px solid var(--border-color);
+}
+
+.col-right section {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+}
+
+#contact-form {
+    background-color: var(--section-bg);
+    border: 1px solid var(--border-color);
+}
+
+@media (min-width: 768px) {
+    main {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 25px;
+        align-items: start;
+    }
+
+    .col-left, .col-right {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    #contact-form, #employer-comments {
+        grid-column: 1 / -1;
+        margin-top: 10px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    #contact-form {
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+h1 {
+    color: var(--accent);
+    font-size: 2.2rem;
+    margin-bottom: 5px;
+}
+
+h2 {
+    color: var(--accent);
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 10px;
+    margin-top: 0;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+    border-bottom: 1px dashed var(--border-color);
+    padding-bottom: 2px;
+}
+
+a:hover {
+    color: var(--accent-hover);
+    border-bottom: 1px solid var(--accent-hover);
+    transform: translateY(-1px);
+    display: inline-block;
+}
+
+.comment-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-left: 5px solid var(--accent);
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    transition: var(--transition);
+}
+
+.comment-card:hover {
+    transform: translateX(5px); 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.comment-author {
+    font-weight: bold;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 5px;
+}
+
+.comment-email {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--border-color) !important;
+}
+
+th {
+    background-color: var(--border-color) !important;
+    padding: 15px;
+    text-align: left;
+}
+
+td {
+    padding: 12px;
+    border-bottom: 1px solid var(--border-color) !important;
+}
+
+tr[bgcolor] {
+    background-color: transparent !important;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 450px;
+    margin: 0 auto;
+    gap: 15px;
+}
+
+label {
+    font-weight: 600;
+    margin-bottom: -5px;
+    color: var(--accent);
+}
+
+input[type="text"], 
+input[type="email"], 
+input[type="tel"],
+textarea {
+    margin-bottom: 0;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--card-bg);
+    color: var(--text-dark);
+    transition: var(--transition);
+    font-family: inherit;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+input[type="submit"] {
+    background-color: var(--accent);
+    color: var(--accent-text);
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+input[type="submit"]:hover {
+    background-color: var(--accent-hover);
+    transform: translateY(-2px);
+}
+
+address ul {
+    list-style: none;
+    padding: 0;
+}
+
+address li {
+    margin-bottom: 10px;
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 40px;
+    padding: 20px;
+    color: var(--text-muted);
+}
+
+hr { 
+    border-color: var(--border-color) !important;
+    background: transparent !important;
+    border-style: solid;
+    border-width: 1px 0 0 0;
+}
+center { display: block; }
+font { color: inherit !important; }
+
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(3px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.show {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-content {
+    background-color: var(--card-bg);
+    padding: 30px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 450px;
+    position: relative;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    transform: translateY(-20px);
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.show .modal-content {
+    transform: translateY(0);
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 1.8rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: color 0.3s;
+    line-height: 1;
+}
+
+.close-btn:hover {
+    color: var(--accent);
+}
+
+@keyframes fade-in-up {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@supports not (animation-timeline: view()) {
+    section {
+        animation: fade-in-up 0.8s ease-out both;
+    }
+    section:nth-of-type(1) { animation-delay: 0.1s; }
+    section:nth-of-type(2) { animation-delay: 0.3s; }
+    section:nth-of-type(3) { animation-delay: 0.5s; }
+    section:nth-of-type(4) { animation-delay: 0.7s; }
+    section:nth-of-type(5) { animation-delay: 0.9s; }
+    section:nth-of-type(6) { animation-delay: 1.1s; }
+}
